@@ -1,0 +1,15 @@
+{
+    "name": "fabie/phpmvc-framework",
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "authors": [
+        {
+            "name": "Fabien Winkler",
+            "email": "fabien.winkler@outlook.fr"
+        }
+    ],
+    "require": {}
+}
