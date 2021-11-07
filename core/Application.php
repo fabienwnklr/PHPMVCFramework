@@ -12,16 +12,24 @@ class Application
 {
     public Router $router;
     public Request $request;
+    public Response $response;
+    public static Application $app;
+    public Controller $controller;
 
-    function __construct()
+    static string $ROOT_DIR;
+
+    function __construct(String $rootPath)
     {
+        self::$ROOT_DIR = $rootPath;
+        self::$app = $this;
         $this->request = new Request();
-        $this->router = new Router($this->request);
+        $this->response = new Response();
+        $this->router = new Router($this->request, $this->response);
     }
 
     function run()
     {
-        $this->router->resolve();
+        echo $this->router->resolve();
     }
 
        
