@@ -43,7 +43,7 @@ class Field
             $this->model->{$this->attribute},
             $this->attribute,
             $this->model->hasError($this->attribute) ? ' is-invalid' : '',
-            $this->attribute,
+            $this->model->getLabel($this->attribute),
             $this->model->getFirstError($this->attribute),
         );
     }

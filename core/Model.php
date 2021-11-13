@@ -26,6 +26,22 @@ abstract class Model
 
     abstract public function rules(): array;
 
+    public function labels(): array
+    {
+        return [];
+    }
+
+    /**
+     * return label for field
+     *
+     * @param string $attribute
+     * @return string
+     */
+    public function getLabel(string $attribute): string
+    {
+        return $this->labels()[$attribute] ?? $attribute;
+    }
+
     public array $errors = [];
 
     /**
@@ -62,12 +78,23 @@ abstract class Model
                 endif;
 
                 if ($ruleName === self::RULE_MATCH && $value !== $this->{$rule['match']}):
+                    $rule['match']  = $this->getLabel($rule['match']);
                     $this->addError($attribute, self::RULE_MATCH, $rule);
                 endif;
 
-                // if ($ruleName === self::RULE_UNIQUE && $this->findBy($attribute, $value)):
-                //     $this->addError($attribute, self::RULE_UNIQUE, $rule);
-                // endif;
+                if ($ruleName === self::RULE_UNIQUE):
+                    $className = $rule['class'];
+                    $attribute = $rule['attribute'] ?? $attribute;
+                    $tableName = $className::tableName();
+                    $statement = Application::$app->db->prepare("SELECT * FROM $tableName WHERE $attribute = :attr");
+                    $statement->bindValue(":attr", $value);
+                    $statement->execute();
+                    $record = $statement->fetchObject();
+
+                    if ($record):
+                        $this->addError($attribute, self::RULE_UNIQUE, ['field' => $this->getLabel($attribute)]);
+                    endif;
+                endif;
 
             endforeach;
 
@@ -107,7 +134,7 @@ abstract class Model
             self::RULE_MIN => 'Min length of this field must be {min}',
             self::RULE_MAX => 'Max length of this field must be {max}',
             self::RULE_MATCH => 'This field must be the same as {match}',
-            self::RULE_UNIQUE => 'This field must be unique'
+            self::RULE_UNIQUE => 'Record with this {field} already exist'
         ];
     }
 

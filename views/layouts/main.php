@@ -1,3 +1,5 @@
+<?php use \app\core\Application; ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -41,21 +43,12 @@
     </nav>
 
     <div class="container">
-        {{content}}
-    </div>
-
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header">
-                <img src="" class="rounded me-2" alt="">
-                <strong class="me-auto">Bootstrap</strong>
-                <small>11 mins ago</small>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body">
-                Hello, world! This is a toast message.
-            </div>
+        <?php if (Application::$app->session->getFlash('success')): ?>
+        <div class="alert alert-success">
+            <?php echo Application::$app->session->getFlash('success'); ?>
         </div>
+        <?php endif; ?>
+        {{content}}
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

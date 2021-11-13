@@ -121,9 +121,9 @@ class Database
     /**
      * Get all migrations that have been applied to the database
      *
-     * @return array
+     * @return array|false
      */
-    public function getAppliedMigrations()
+    public function getAppliedMigrations(): array|false
     {
         try {
             $statement = $this->pdo->prepare('SELECT name FROM migrations');
@@ -141,7 +141,7 @@ class Database
      * @param array $migrations
      * @return void
      */
-    public function saveMigrations(array $migrations)
+    public function saveMigrations(array $migrations): void
     {
         try {
             $str = implode(",", array_map(fn ($m) => "('$m')", $migrations));
@@ -151,6 +151,17 @@ class Database
         } catch (\PDOException $e) {
             $this->log('Error during insertion of migrations : ' . $e->getMessage());
         }
+    }
+
+    /**
+     * Shortcut for prepare sql query
+     *
+     * @param string $sql
+     * @return PDOStatement|false
+     */
+    public function prepare(string $sql): \PDOStatement|false
+    {
+        return $this->pdo->prepare($sql);
     }
 
     protected function log($message)
