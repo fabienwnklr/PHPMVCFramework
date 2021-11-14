@@ -75,7 +75,7 @@ class Application
      * @param DbModel $user
      * @return bool
      */
-    public function login(DbModel $user): bool
+    public function login(UserModel $user): bool
     {
         $this->user = $user;
         $primaryKey = $this->user->primaryKey();
