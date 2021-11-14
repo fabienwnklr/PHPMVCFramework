@@ -2,7 +2,7 @@
 
 namespace app\models;
 
-use app\core\UserModel;
+use fabwnklr\fat\UserModel;
 
 class User extends UserModel
 {

@@ -2,7 +2,7 @@
 
 namespace app\models;
 
-use app\core\Model;
+use fabwnklr\fat\Model;
 
 class ContactForm extends Model
 {

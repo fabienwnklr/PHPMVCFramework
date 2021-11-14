@@ -3,12 +3,12 @@
 namespace app\controllers;
 
 use app\models\User;
-use app\core\Request;
-use app\core\Response;
-use app\core\Controller;
-use app\core\Application;
+use fabwnklr\fat\Request;
+use fabwnklr\fat\Response;
+use fabwnklr\fat\Controller;
+use fabwnklr\fat\Application;
 use app\models\LoginForm;
-use app\core\middlewares\AuthMiddleware;
+use fabwnklr\fat\middlewares\AuthMiddleware;
 
 class AuthController extends Controller
 {

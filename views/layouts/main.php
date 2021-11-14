@@ -1,5 +1,5 @@
 <?php 
-use \app\core\Application;
+use \fabwnklr\fat\Application;
 ?>
 
 <!doctype html>

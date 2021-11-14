@@ -1,11 +1,11 @@
 <?php
 
-/** @var \app\core\View $this */
-/** @var \app\core\ContactForm $model */
+/** @var \fabwnklr\fat\View $this */
+/** @var \fabwnklr\fat\ContactForm $model */
 $this->title = 'Contact';
 
-use app\core\form\Form;
-use app\core\form\TexareaField;
+use fabwnklr\fat\form\Form;
+use fabwnklr\fat\form\TexareaField;
 
 ?>
 

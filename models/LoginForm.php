@@ -2,10 +2,10 @@
 
 namespace app\models;
 
-use app\core\Model;
-use app\core\Utils;
+use fabwnklr\fat\Model;
+use fabwnklr\fat\Utils;
 use app\models\User;
-use app\core\Application;
+use fabwnklr\fat\Application;
 
 class LoginForm extends Model
 {

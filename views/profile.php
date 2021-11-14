@@ -1,5 +1,5 @@
 <?php 
-/** @var \app\core\View $this */
+/** @var \fabwnklr\fat\View $this */
 $this->title = 'Profile';
 ?>
 

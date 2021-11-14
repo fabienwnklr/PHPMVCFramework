@@ -4,8 +4,42 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4568c732afda69ef2176ab90382e1b19",
+    "content-hash": "9689756ba92b198382f6325f9cd0d72d",
     "packages": [
+        {
+            "name": "fabwnklr/fat",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fabienwnklr/Fat.git",
+                "reference": "4b6a8322da3a2505d7cbe87ce2daf1def6356e8a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fabienwnklr/Fat/zipball/4b6a8322da3a2505d7cbe87ce2daf1def6356e8a",
+                "reference": "4b6a8322da3a2505d7cbe87ce2daf1def6356e8a",
+                "shasum": ""
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "fabwnklr\\fat\\": "."
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Fabien Winkler",
+                    "email": "fabien.winkler@outlook.fr"
+                }
+            ],
+            "support": {
+                "issues": "https://github.com/fabienwnklr/Fat/issues",
+                "source": "https://github.com/fabienwnklr/Fat/tree/v1.0.3"
+            },
+            "time": "2021-11-14T18:56:35+00:00"
+        },
         {
             "name": "graham-campbell/result-type",
             "version": "v1.0.3",
@@ -460,7 +494,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "fabwnklr/fat": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
