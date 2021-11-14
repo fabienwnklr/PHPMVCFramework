@@ -2,10 +2,9 @@
 
 namespace app\models;
 
-use app\core\Model;
-use app\core\DbModel;
+use app\core\UserModel;
 
-class User extends DbModel
+class User extends UserModel
 {
     public string $firstname = '';
     public string $lastname = '';
@@ -13,9 +12,14 @@ class User extends DbModel
     public string $password = '';
     public string $passwordConfirm = '';
 
-    public function tableName(): string
+    public static function tableName(): string
     {
         return 'users';
+    }
+
+    public static function primaryKey(): string
+    {
+        return 'id';
     }
 
     /**
@@ -77,5 +81,10 @@ class User extends DbModel
             'password' => 'Password',
             'passwordConfirm' => 'Password Confirm'
         ];
+    }
+
+    public function getDisplayName(): string
+    {
+        return ucfirst($this->firstname) . ' ' . ucfirst($this->lastname);
     }
 }

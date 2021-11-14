@@ -1,3 +1,6 @@
+<?php
+
+?>
 <h1 class="mb-3">Create an account</h1>
 
 <?php $form = app\core\form\Form::begin('', 'post') ?>

@@ -4,22 +4,24 @@ namespace app\core\form;
 
 use app\core\Model;
 
-class Field
+abstract class BaseField
 {
-    public const TYPE_TEXT = 'text';
-    public const TYPE_EMAIL = 'email';
-    public const TYPE_PASSWORD = 'password';
-
-    public string $type;
     public Model $model;
     public string $attribute;
 
+    /**
+     * BaseField constructor.
+     *
+     * @param Model $model
+     * @param string $attribute
+     */
     public function __construct(Model $model, string $attribute)
     {
-        $this->type = '';
         $this->model = $model;
         $this->attribute = $attribute;
     }
+
+    abstract public function renderInput(): string;
 
     /**
      * Generate input text field
@@ -31,32 +33,16 @@ class Field
         return sprintf(
             '
             <div class="form-floating mb-3">
-                <input type="%s" name="%s" value="%s" placeholder="%s" class="form-control%s">
+                %s
                 <label>%s</label>
                 <div class="invalid-feedback">
                     %s
                 </div>
             </div>
             ',
-            $this->type,
-            $this->attribute,
-            $this->model->{$this->attribute},
-            $this->attribute,
-            $this->model->hasError($this->attribute) ? ' is-invalid' : '',
+            $this->renderInput(),
             $this->model->getLabel($this->attribute),
             $this->model->getFirstError($this->attribute),
         );
-    }
-
-    /**
-     * Generate input password field
-     * 
-     * @return string
-     */
-    public function passwordField()
-    {
-        $this->type = self::TYPE_PASSWORD;
-
-        return $this;
     }
 }

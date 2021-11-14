@@ -6,7 +6,7 @@ use app\core\Model;
 
 class Form
 {
-    public static function begin(string $action, string $method = 'post')
+    public static function begin(string $action = '', string $method = 'post')
     {
         echo sprintf('<form action="%s" method="%s">', $action, $method);
 
@@ -18,8 +18,8 @@ class Form
         echo '</form>';
     }
 
-    public function field(Model $model, $attribute)
+    public function field(Model $model, string $attribute)
     {
-        return new Field($model, $attribute);
+        return new InputField($model, $attribute);
     }
 }

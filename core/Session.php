@@ -45,6 +45,40 @@ class Session
         return $_SESSION[self::FLASH_KEY][$key]['value'] ?? false;
     }
 
+    /**
+     * Set session value
+     *
+     * @param string $key
+     * @param [type] $value
+     * @return void
+     */
+    public function set(string $key, $value): void
+    {
+        $_SESSION[$key] = $value;
+    }
+
+    /**
+     * Get session value
+     *
+     * @param string $key
+     * @return mixed
+     */
+    public function get(string $key): mixed
+    {
+        return $_SESSION[$key] ?? null;
+    }
+
+    /**
+     * Remove session value
+     *
+     * @param string $key
+     * @return void
+     */
+    public function remove(string $key): void
+    {
+        unset($_SESSION[$key]);
+    }
+
     public function __destruct()
     {
         // Iterate over marked to be removed

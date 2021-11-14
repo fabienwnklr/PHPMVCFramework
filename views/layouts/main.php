@@ -1,4 +1,6 @@
-<?php use \app\core\Application; ?>
+<?php 
+use \app\core\Application;
+?>
 
 <!doctype html>
 <html lang="en">
@@ -11,7 +13,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title><?= $this->title ?></title>
 </head>
 
 <body>
@@ -30,6 +32,7 @@
                         <a class="nav-link" href="/contact">Contact</a>
                     </li>
                 </ul>
+                <?php if (Application::isGuest()): ?>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="/register">Register</a>
@@ -38,6 +41,16 @@
                         <a class="nav-link" href="/login">Login</a>
                     </li>
                 </ul>
+                <?php else: ?>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/profile">Profile<a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                </ul>
+                <?php endif ?>
             </div>
         </div>
     </nav>
